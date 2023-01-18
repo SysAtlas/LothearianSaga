@@ -31,6 +31,12 @@ public class Screen extends JFrame implements ActionListener {
         background.setBounds(0,0,1024,900);
         background.setBorder(new BasicBorders.ButtonBorder(Color.yellow,Color.orange,Color.yellow,Color.orange));
 
+        JLabel character = new JLabel();
+        character.setBounds(100,0,1024,900);
+        character.setIcon(new ImageIcon("./images/reikabezfona.png"));
+        background.add(character);
+
+
         textField.setBounds(1024,0,416,600);
         textField.setBackground(new Color(0, 0, 0));
         textField.setForeground(new Color(255, 215, 0));
