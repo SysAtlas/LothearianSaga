@@ -45,7 +45,7 @@ public class Sound {
 
     public void stop() {
         if (!clip.isOpen()) {
-            System.out.println("utilita.Sound not open!");
+            System.out.println("Sound not open!");
             return;
         }
         try {
