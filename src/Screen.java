@@ -38,6 +38,7 @@ public class Screen extends JFrame implements ActionListener {
         textField.setBorder(new BasicBorders.ButtonBorder(Color.yellow,Color.orange,Color.yellow,Color.orange));
         textField.setOpaque(true);
         textField.setLineWrap(true);
+        textField.setWrapStyleWord(true);
         textField.setEditable(false);
 
         this.setLayout(null);
