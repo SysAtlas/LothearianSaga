@@ -5,12 +5,15 @@ import javax.swing.plaf.basic.BasicBorders;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.NoSuchFileException;
 import java.util.concurrent.TimeUnit;
 
 public class Screen extends JFrame implements ActionListener {
     private final JTextField console;
     private final JLabel background;
     private final JTextArea textField;
+
+    private final JLabel character;
 
 
     public Screen() {
@@ -19,6 +22,7 @@ public class Screen extends JFrame implements ActionListener {
         this.console = new JTextField();
         this.textField = new JTextArea();
         this.background = new JLabel();
+        this.character = new JLabel();
 
         console.setBounds(1024,600,416,300);
         console.setBackground(new Color(0, 0, 0));
@@ -30,11 +34,9 @@ public class Screen extends JFrame implements ActionListener {
 
         background.setBounds(0,0,1024,900);
         background.setBorder(new BasicBorders.ButtonBorder(Color.yellow,Color.orange,Color.yellow,Color.orange));
-
-        JLabel character = new JLabel();
-        character.setBounds(100,0,1024,900);
-        character.setIcon(new ImageIcon("./images/reikabezfona.png"));
         background.add(character);
+
+        character.setBounds(100,0,1024,900);
 
 
         textField.setBounds(1024,0,416,600);
@@ -74,7 +76,8 @@ public class Screen extends JFrame implements ActionListener {
             case "evangelion" -> {
                 Sound.stopAll();
                 Sound bleep = new Sound("./sounds/music/roflanMusic.wav");
-                textField.setText("There is no image of Rei Ayanami. Enjoy the cool music instead!");
+                this.setCharacter("./images/reikabezfona.png");
+                textField.setText("You look sad today...");
                 bleep.play();
             }
             case "stream" -> {
@@ -82,6 +85,13 @@ public class Screen extends JFrame implements ActionListener {
                 Sound bleep = new Sound("./sounds/music/bloodyStream.wav");
                 this.setBackground("./images/sword.png");
                 textField.setText("Enjoy this image of an AI-generated sword!");
+                bleep.play();
+            }
+            case "synth" -> {
+                Sound.stopAll();
+                Sound bleep = new Sound("./sounds/music/synthtod.wav");
+                this.setCharacter("./images/asuka.png");
+                textField.setText("You look even sadder today...");
                 bleep.play();
             }
             case "stop" -> {
@@ -106,6 +116,10 @@ public class Screen extends JFrame implements ActionListener {
 
     public void setBackground(String filePath) {
         this.background.setIcon(new ImageIcon(filePath));
+    }
+
+    public void setCharacter(String filePath) {
+        this.character.setIcon(new ImageIcon(filePath));
     }
 
     public static void main(String[] args) {
