@@ -94,6 +94,9 @@ public class Screen extends JFrame implements ActionListener {
                 textField.setText("You look even sadder today...");
                 bleep.play();
             }
+            case "diagram" -> {
+                this.setBackground("./images/controlflow.png");
+            }
             case "stop" -> {
                 Sound.stopAll();
             }
